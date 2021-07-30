@@ -1,0 +1,70 @@
+.img-place {
+    border: 1px dashed black;
+    margin-top: 10px;
+    width: 802px;
+    height: 602px;
+    text-align: center;
+    position: relative;
+}
+
+.canvas {
+    width: 100%;
+    height: 100%;
+    display: none;
+    border: 2px solid black;
+}
+
+#choosenImage {
+    width: auto;
+    max-height: auto;
+}
+
+.img-cropper {
+    position: absolute;
+    border: 1px dashed #000;
+    width: 200px;
+    height: 100px;
+    top: 249px;
+    left: 309px
+}
+
+.img-cropper.moving {
+    cursor: move;
+}
+
+.img-place-head {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-72px);
+    color: gray;
+    font-size: 120px;
+    text-align: center;
+    width: 100%;
+}
+
+.parameters {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.parameters label {
+    width: 30%;
+    font-size: 25px;
+}
+
+.parameters input {
+    width: 60%;
+    margin-bottom: 5px;
+}
+
+.crop-btn {
+    margin-top: 30px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.select-file {
+    width: 70%;
+    margin-left: 100px;
+}

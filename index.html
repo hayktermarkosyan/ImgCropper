@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Cropper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="img-place">
+                    <h5 class="img-place-head" id="imgPlaceHead">Upload image</h5>
+                    <img id="choosenImage" src="" alt="">
+                    <canvas class="canvas" draggable="true"></canvas>
+                    <div class="img-cropper d-none"></div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="row parameters">
+                    <label for="widthInput" class="form-label">Width:</label>
+                    <input class="form-control" type="number" id="widthInput" placeholder="200px"><br>
+
+                    <label for="heightInput" class="form-label">Height:</label>
+                    <input class="form-control" type="number" id="heightInput" placeholder="200px"><br>
+
+                    <button id="crop-btn" type="button" class="btn btn-primary crop-btn">Crop</button>
+                </div>
+
+                <div id="main-cropper" class="row" style="margin-top: 150px;">
+                    <input class="form-control select-file" id="imgChooseInp" type="file" accept="image/*">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
