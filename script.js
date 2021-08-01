@@ -1,3 +1,4 @@
+let imgPlace = document.querySelector('.img-place');
 let imgChooseInp = document.getElementById('imgChooseInp');
 let imgPlaceHead = document.getElementById('imgPlaceHead');
 let img = document.getElementById('choosenImage');
@@ -13,13 +14,13 @@ let imgCropper = document.querySelector('.img-cropper')
 
 img.onload = function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     canvas.width = img.width;
     canvas.height = img.height;
     // resize image
     ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
 
-
+    canvas.style.display = 'inline';
+    imgPlace.style.border = 'none';
 }
 
 imgChooseInp.addEventListener('change', () => {
@@ -32,13 +33,9 @@ imgChooseInp.addEventListener('change', () => {
         reader.onload = function(e) {
             img.src = e.target.result;
         }
+
         reader.readAsDataURL(imgChooseInp.files[0]);
     }
-
-    console.log(imgChooseInp.files[0].width)
-    console.log(imgChooseInp.files[0].height)
-
-
 })
 
 widthInput.addEventListener('change', () => {
