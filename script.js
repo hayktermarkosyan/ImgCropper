@@ -53,15 +53,18 @@ cropBtn.addEventListener('click', () => {
 
     canvas.style.display = 'none';
     // crop image
-
-    let left = parseInt((canvas.width / 2) - (imgCropper.offsetWidth / 2));
-    let top = parseInt((canvas.height / 2) - (imgCropper.offsetHeight / 2));
-    let width = imgCropper.offsetWidth;
-    let height = imgCropper.offsetHeight;
+    let correctionX = img.width / imgPlace.offsetWidth;
+    let correctionY = img.height / imgPlace.offsetHeight;
+    let left = parseInt((canvas.width / 2) - (imgCropper.offsetWidth * correctionX / 2));
+    let top = parseInt((canvas.height / 2) - (imgCropper.offsetHeight * correctionY / 2));
+    let width = imgCropper.offsetWidth * correctionX;
+    let height = imgCropper.offsetHeight * correctionY;
     ctx.drawImage(img,
-        imgCropper.offsetLeft, imgCropper.offsetTop, imgCropper.offsetWidth, imgCropper.offsetHeight,
+        imgCropper.offsetLeft * correctionX, imgCropper.offsetTop * correctionY, imgCropper.offsetWidth * correctionX, imgCropper.offsetHeight * correctionY,
         left, top, width, height);
 
+    console.log(correctionX)
+    console.log(correctionY)
     img.style.display = 'none';
     canvas.style.display = 'inline';
     imgCropper.style.display = 'none';
