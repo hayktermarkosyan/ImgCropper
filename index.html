@@ -14,6 +14,12 @@
         <div class="row">
             <div class="col-lg-7">
                 <div class="img-place">
+                    <div class='image-resizers'>
+                        <div class='image-resizer image-top-left'></div>
+                        <div class='image-resizer image-top-right'></div>
+                        <div class='image-resizer image-bottom-left'></div>
+                        <div class='image-resizer image-bottom-right'></div>
+                    </div>
                     <h5 class="img-place-head" id="imgPlaceHead">Upload image</h5>
 
                     <canvas class="canvas" draggable="true">
@@ -40,7 +46,17 @@
                     <button id="crop-btn" type="button" class="btn btn-primary crop-btn">Crop</button>
                 </div>
 
-                <div id="main-cropper" class="row" style="margin-top: 150px;">
+                <div class="row parameters">
+                    <label for="image-widthInput" class="form-label">Width:</label>
+                    <input class="form-control" type="number" id="image-widthInput" placeholder="800px"><br>
+
+                    <label for="image-heightInput" class="form-label">Height:</label>
+                    <input class="form-control" type="number" id="image-heightInput" placeholder="600px"><br>
+
+                    <button id="resize-btn" type="submit" class="btn btn-success resize-btn">Resize</button>
+                </div>
+
+                <div id="main-cropper" class="row" style="margin-top: 50px;">
                     <input class="form-control select-file" id="imgChooseInp" type="file" accept="image/*">
                 </div>
 

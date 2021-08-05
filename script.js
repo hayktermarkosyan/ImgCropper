@@ -7,8 +7,10 @@ let ctx = canvas.getContext('2d');
 let widthInput = document.getElementById('widthInput');
 let heightInput = document.getElementById('heightInput');
 let cropBtn = document.getElementById('crop-btn');
-
-let imgCropper = document.querySelector('.img-cropper')
+let imgWidthInput = document.getElementById('image-widthInput');
+let imgHeightInput = document.getElementById('image-heightInput');
+let resizeBtn = document.getElementById('resize-btn');
+let imgCropper = document.querySelector('.img-cropper');
 
 
 
@@ -35,6 +37,17 @@ imgChooseInp.addEventListener('change', () => {
         }
 
         reader.readAsDataURL(imgChooseInp.files[0]);
+        imgPlace.classList.toggle('resizable-image');
+        makeResizableImg('.resizable-image');
+
+        resizeBtn.addEventListener('click', () => {
+            if (imgWidthInput.value) {
+                imgPlace.style.width = imgWidthInput.value + 'px';
+            }
+            if (imgHeightInput.value) {
+                imgPlace.style.height = imgHeightInput.value + 'px';
+            }
+        });
     }
 })
 
@@ -111,7 +124,7 @@ function moveImgCropper(e) {
 
 // resizable imgCropper
 
-function makeResizableDiv(div) {
+function makeResizableCropper(div) {
     const element = document.querySelector(div);
     const resizers = document.querySelectorAll(div + ' .resizer');
     const minimum_size = 20;
@@ -186,4 +199,81 @@ function makeResizableDiv(div) {
     }
 }
 
-makeResizableDiv('.resizable');
+makeResizableCropper('.resizable');
+
+// resizable image
+
+function makeResizableImg(div) {
+    const element = document.querySelector(div);
+    const resizers = document.querySelectorAll(div + ' .image-resizer');
+    const minimum_size = 20;
+    let original_width = 0;
+    let original_height = 0;
+    let original_x = 0;
+    let original_y = 0;
+    let original_mouse_x = 0;
+    let original_mouse_y = 0;
+    for (let i = 0; i < resizers.length; i++) {
+        const currentResizer = resizers[i];
+        currentResizer.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            original_width = parseFloat(getComputedStyle(element).getPropertyValue('width').replace('px', ''));
+            original_height = parseFloat(getComputedStyle(element).getPropertyValue('height').replace('px', ''));
+            original_x = element.getBoundingClientRect().left;
+            original_y = element.getBoundingClientRect().top;
+            original_mouse_x = e.pageX;
+            original_mouse_y = e.pageY;
+            window.addEventListener('mousemove', resize);
+            window.addEventListener('mouseup', stopResize);
+        })
+
+        function resize(e) {
+            isCropperMoving = false;
+            if (currentResizer.classList.contains('image-bottom-right')) {
+                const width = original_width + (e.pageX - original_mouse_x);
+                const height = original_height + (e.pageY - original_mouse_y);
+                if (width > minimum_size) {
+                    element.style.width = width + 'px';
+                }
+                if (height > minimum_size) {
+                    element.style.height = height + 'px';
+                }
+            } else if (currentResizer.classList.contains('image-bottom-left')) {
+                const height = original_height + (e.pageY - original_mouse_y);
+                const width = original_width - (e.pageX - original_mouse_x);
+                if (height > minimum_size) {
+                    element.style.height = height + 'px';
+                }
+                if (width > minimum_size) {
+                    element.style.width = width + 'px';
+                    element.style.left = original_x + (e.pageX - original_mouse_x) + 'px';
+                }
+            } else if (currentResizer.classList.contains('image-top-right')) {
+                const width = original_width + (e.pageX - original_mouse_x);
+                const height = original_height - (e.pageY - original_mouse_y);
+                if (width > minimum_size) {
+                    element.style.width = width + 'px';
+                }
+                if (height > minimum_size) {
+                    element.style.height = height + 'px';
+                    element.style.top = original_y + (e.pageY - original_mouse_y) + 'px';
+                }
+            } else {
+                const width = original_width - (e.pageX - original_mouse_x);
+                const height = original_height - (e.pageY - original_mouse_y);
+                if (width > minimum_size) {
+                    element.style.width = width + 'px';
+                    element.style.left = original_x + (e.pageX - original_mouse_x) + 'px';
+                }
+                if (height > minimum_size) {
+                    element.style.height = height + 'px';
+                    element.style.top = original_y + (e.pageY - original_mouse_y) + 'px';
+                }
+            }
+        }
+
+        function stopResize() {
+            window.removeEventListener('mousemove', resize);
+        }
+    }
+}
