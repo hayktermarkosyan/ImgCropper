@@ -1,7 +1,7 @@
 .img-place {
     border: 1px dashed black;
     margin-top: 10px;
-    width: 802px;
+    width: 880px;
     height: 602px;
     text-align: center;
     position: relative;
@@ -94,24 +94,6 @@
     z-index: 3000;
 }
 
-.resizable-image .image-resizers .image-resizer.image-top-left {
-    left: -5px;
-    top: -5px;
-    cursor: nwse-resize;
-}
-
-.resizable-image .image-resizers .image-resizer.image-top-right {
-    right: -5px;
-    top: -5px;
-    cursor: nesw-resize;
-}
-
-.resizable-image .image-resizers .image-resizer.image-bottom-left {
-    left: -5px;
-    bottom: -5px;
-    cursor: nesw-resize;
-}
-
 .resizable-image .image-resizers .image-resizer.image-bottom-right {
     right: -5px;
     bottom: -5px;
@@ -162,6 +144,6 @@
 }
 
 .select-file {
-    width: 70%;
-    margin-left: 100px;
+    width: 80%;
+    margin-left: 30px;
 }
