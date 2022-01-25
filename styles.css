@@ -114,8 +114,14 @@
     width: 100%;
 }
 
+.sets {
+    text-align: center;
+    margin: 10px 0 0 0;
+    color: gray;
+}
+
 .parameters {
-    margin-top: 80px;
+    margin-top: 30px;
     text-align: center;
 }
 
@@ -144,6 +150,30 @@
 }
 
 .select-file {
-    width: 80%;
-    margin-left: 30px;
+    width: 83%;
+    margin-left: 15px;
+}
+
+.rotate-btn {
+    display: inline-block;
+    margin-top: 30px;
+    width: 45%;
+}
+
+.mirror-btn {
+    display: block;
+    margin-top: 30px;
+    width: 92%;
+}
+
+.mirrorImage{
+    transform: rotateY(180deg)!important;
+}
+
+.rotateLeft {
+    transform: rotate(-90deg);
+}
+
+.rotateRight {
+    transform: rotate(90deg);
 }

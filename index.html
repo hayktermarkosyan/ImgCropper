@@ -19,7 +19,7 @@
                     </div>
                     <h5 class="img-place-head" id="imgPlaceHead">Upload image</h5>
 
-                    <canvas class="canvas" draggable="true">
+                    <canvas class="canvas" draggable="false">
                         <img id="choosenImage" src="" alt="">
                     </canvas>
                     <div class="img-cropper resizable d-none">
@@ -32,18 +32,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="row parameters">
-                    <label for="widthInput" class="form-label">Width:</label>
-                    <input class="form-control" type="number" id="widthInput" placeholder="200px"><br>
-
-                    <label for="heightInput" class="form-label">Height:</label>
-                    <input class="form-control" type="number" id="heightInput" placeholder="200px"><br>
-
-                    <button id="crop-btn" type="button" class="btn btn-primary crop-btn">Crop</button>
+            <div class="col-lg-3 offset-lg-1">
+                <h1 class="sets">Settings</h1>
+                <div id="main-cropper" class="row" style="margin-top: 20px;">
+                    <input class="form-control select-file" id="imgChooseInp" type="file" accept="image/*">
                 </div>
 
-                <div class="row parameters">
+                <button id="rotateL-btn" type="submit" class="btn btn-warning rotate-btn d-none">Rotate left</button>
+                <button id="rotateR-btn" type="submit" class="btn btn-warning rotate-btn d-none">Rotate right</button>
+                <button id="reset-rotate-btn" type="submit" class="btn btn-success mirror-btn d-none">Reset rotation settings</button>
+                <button id="mirror-btn" type="submit" class="btn btn-secondary mirror-btn d-none">Mirror effect</button>
+
+                <div class="row parameters image-parameters">
                     <label for="image-widthInput" class="form-label">Width:</label>
                     <input class="form-control" type="number" id="image-widthInput" placeholder="800px"><br>
 
@@ -53,10 +53,15 @@
                     <button id="resize-btn" type="submit" class="btn btn-success resize-btn">Resize</button>
                 </div>
 
-                <div id="main-cropper" class="row" style="margin-top: 50px;">
-                    <input class="form-control select-file" id="imgChooseInp" type="file" accept="image/*">
-                </div>
+                <div class="row parameters crop-parameters">
+                    <label for="widthInput" class="form-label">Width:</label>
+                    <input class="form-control" type="number" id="widthInput" placeholder="200px"><br>
 
+                    <label for="heightInput" class="form-label">Height:</label>
+                    <input class="form-control" type="number" id="heightInput" placeholder="100px"><br>
+
+                    <button id="crop-btn" type="button" class="btn btn-primary crop-btn">Crop</button>
+                </div>
             </div>
         </div>
     </div>
