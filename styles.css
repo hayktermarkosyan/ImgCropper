@@ -116,7 +116,7 @@
 
 .sets {
     text-align: center;
-    margin: 10px 0 0 0;
+    margin-top: 10px;
     color: gray;
 }
 
@@ -151,7 +151,7 @@
 
 .select-file {
     width: 83%;
-    margin-left: 15px;
+    margin: auto;
 }
 
 .rotate-btn {
@@ -176,4 +176,43 @@
 
 .rotateRight {
     transform: rotate(90deg);
+}
+
+@media screen and (max-width: 992px) {
+    .sets {
+        margin-top: 290px;
+    }
+
+    .select-file {
+        width: 50%;
+        margin: auto;
+    }
+
+    .parameters label {
+        width: 30%;
+    }
+    
+    .parameters input {
+        width: 50%;
+        margin-bottom: 5px;
+    }
+    
+    .crop-btn {
+        width: 30%;
+    }
+    
+    .resize-btn {
+        width: 30%;
+    }
+
+    .rotate-btn {
+        width: 50%;
+        margin-top: 15px;
+        margin-left: 25%;
+    }
+    
+    .mirror-btn {
+        width: 50%;
+        margin: 30px auto;
+    }
 }
